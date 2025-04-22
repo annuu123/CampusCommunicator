@@ -1,3 +1,4 @@
+// NoticeBoard.java
 package CampusCommunicator.notice;
 
 import CampusCommunicator.models.Notice;
@@ -27,6 +28,7 @@ public class NoticeBoard {
             System.out.println(n);
         }
     }
+
     public void searchNotices(String keyword) {
         System.out.println("Search Results for: " + keyword);
         boolean found = false;
@@ -41,6 +43,7 @@ public class NoticeBoard {
             System.out.println("No notices found matching the keyword.");
         }
     }
+
     public void filterNoticesByAuthor(String author) {
         System.out.println("\n📌 Notices by " + author + ":");
         boolean found = false;
@@ -54,5 +57,4 @@ public class NoticeBoard {
             System.out.println("No notices found by this author.");
         }
     }
-     
 }
