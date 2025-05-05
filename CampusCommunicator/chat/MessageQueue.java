@@ -1,26 +1,74 @@
 package CampusCommunicator.chat;
 
-import CampusCommunicator.models.Message;
-
-import java.util.LinkedList;
-import java.util.Queue;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessageQueue {
-    private Queue<Message> queue = new LinkedList<>();
+    private static MessageQueue instance;
+    private List<ChatMessage> messages;
+    private static final String FILE_PATH = "messages.dat";
 
-    public void sendMessage(Message message) {
-        queue.add(message);
-        System.out.println("Sent: " + message);
+    private MessageQueue() {
+        messages = loadMessagesFromFile();
     }
 
-    public void receiveMessages() {
-        while (!queue.isEmpty()) {
-            Message message = queue.poll();
-            System.out.println("Received: " + message);
+    public static MessageQueue getInstance() {
+        if (instance == null) {
+            instance = new MessageQueue();
+        }
+        return instance;
+    }
+
+    public void addMessage(ChatMessage message) {
+        messages.add(message);
+        saveMessagesToFile();
+    }
+
+    public void displayMessages() {
+        if (messages.isEmpty()) {
+            System.out.println("No messages.");
+        } else {
+            for (ChatMessage message : messages) {
+                message.displayMessage();
+            }
         }
     }
 
-    public boolean hasMessages() {
-        return !queue.isEmpty();
+    public List<ChatMessage> getMessages() {
+        return messages;
+    }
+
+    public void getMessagesForUser(String email) {
+        boolean found = false;
+        for (ChatMessage message : messages) {
+            if (message.getReceiver().equalsIgnoreCase(email)) {
+                message.displayMessage();
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No messages found for: " + email);
+        }
+    }
+
+    private void saveMessagesToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            oos.writeObject(messages);
+        } catch (IOException e) {
+            System.out.println("Error saving messages: " + e.getMessage());
+        }
+    }
+
+    private List<ChatMessage> loadMessagesFromFile() {
+        File file = new File(FILE_PATH);
+        if (!file.exists()) return new ArrayList<>();
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+            return (List<ChatMessage>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error loading messages: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 }

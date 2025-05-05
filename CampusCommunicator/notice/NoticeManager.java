@@ -1,87 +1,59 @@
-// NoticeManager.java
 package CampusCommunicator.notice;
 
-import CampusCommunicator.models.Notice;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NoticeManager {
-    private NoticeBoard noticeBoard;
-    private NoticeBST noticeBST;
-    private Scanner scanner;
+    private Map<String, String> notices;
+    private Map<String, String> homework;
 
     public NoticeManager() {
-        this.noticeBoard = new NoticeBoard();
-        this.noticeBST = new NoticeBST();  // Creating instance of NoticeBST
-        this.scanner = new Scanner(System.in);
+        this.notices = new HashMap<>();
+        this.homework = new HashMap<>();
     }
 
-    // Display menu to the user
+    // Display available menu options for the NoticeManager
     public void displayMenu() {
-        while (true) {
-            System.out.println("\n--- Notice Board Menu ---");
-            System.out.println("1. Post Notice");
-            System.out.println("2. Show All Notices");
-            System.out.println("3. Delete Notice");
-            System.out.println("4. Exit");
-            System.out.print("Enter your choice: ");
-            
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
-            
-            switch (choice) {
-                case 1:
-                    postNotice();
-                    break;
-                case 2:
-                    noticeBoard.showAllNotices();
-                    break;
-                case 3:
-                    deleteNotice();
-                    break;
-                case 4:
-                    System.out.println("Exiting...");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-        }
+        System.out.println("\nNotice Manager Menu:");
+        System.out.println("1. Display Notices");
+        System.out.println("2. Add a Notice");
+        System.out.println("3. Add Homework");
+        System.out.println("4. Display Homework for a Student");
+        System.out.println("5. Exit");
+        System.out.print("Please choose an option: ");
     }
 
-    // Method to post a new notice
-    private void postNotice() {
-        System.out.print("Enter the notice title: ");
-        String title = scanner.nextLine();
-        
-        System.out.print("Enter the notice content: ");
-        String content = scanner.nextLine();
-        
-        System.out.print("Enter your name (Posted By): ");
-        String postedBy = scanner.nextLine();
-        
-        // Create the new notice with the provided details
-        Notice notice = new Notice(title, content, postedBy);
-        
-        // Post the notice to the NoticeBoard and NoticeBST
-        noticeBoard.postNotice(notice);
-        noticeBST.insert(notice);
-    }
-
-    // Method to delete a notice by title
-    private void deleteNotice() {
-        System.out.print("Enter the title of the notice to delete: ");
-        String title = scanner.nextLine();
-
-        boolean isDeleted = noticeBST.delete(title);
-        if (isDeleted) {
-            System.out.println("✅ Notice Deleted Successfully.");
+    // Display notices
+    public void displayNotices() {
+        if (notices.isEmpty()) {
+            System.out.println("No notices available.");
         } else {
-            System.out.println("❌ Notice with title '" + title + "' not found.");
+            notices.forEach((subject, notice) -> {
+                System.out.println("Subject: " + subject + " | Notice: " + notice);
+            });
         }
     }
 
-    // Method to show all notices (sorted)
-    public void showAllNotices() {
-        System.out.println("📢 All Notices (Sorted by Title):");
-        noticeBoard.showAllNotices(); // Show notices from NoticeBoard
+    // Add a new notice
+    public void addNotice(String subject, String notice) {
+        notices.put(subject, notice);
+        System.out.println("Notice added for subject: " + subject);
+    }
+
+    // Add homework
+    public void addHomework(String subject, String homeworkContent) {
+        homework.put(subject, homeworkContent);
+        System.out.println("Homework added for subject: " + subject);
+    }
+
+    // Display homework for a student
+    public void displayHomeworkForStudent(String studentSubject) {
+        String homeworkForStudent = homework.get(studentSubject);
+        
+        if (homeworkForStudent == null) {
+            System.out.println("No homework available for " + studentSubject);
+        } else {
+            System.out.println("Homework for " + studentSubject + ": " + homeworkForStudent);
+        }
     }
 }

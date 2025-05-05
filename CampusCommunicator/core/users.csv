@@ -1,0 +1,71 @@
+U001,Admin One,admin1@campus.com,admin,All
+U002,Admin Two,admin2@campus.com,admin,All
+F001,Dr. Java,java.faculty1@campus.com,faculty,Java
+F002,Prof. Code,java.faculty2@campus.com,faculty,Java
+F003,Ms. Python,python.faculty1@campus.com,faculty,Python
+F004,Dr. Snake,python.faculty2@campus.com,faculty,Python
+F005,Mr. Tables,dbms.faculty1@campus.com,faculty,DBMS
+F006,Ms. Query,dbms.faculty2@campus.com,faculty,DBMS
+F007,Dr. Brain,ai.faculty1@campus.com,faculty,AI
+F008,Prof. Logic,ai.faculty2@campus.com,faculty,AI
+S001,Alice,alice@campus.com,student,Java
+S002,Bob,bob@campus.com,student,Java
+S003,Charlie,charlie@campus.com,student,Java
+S004,Diana,diana@campus.com,student,Java
+S005,Ethan,ethan@campus.com,student,Java
+S006,Fiona,fiona@campus.com,student,Java
+S007,George,george@campus.com,student,Java
+S008,Hannah,hannah@campus.com,student,Java
+S009,Ian,ian@campus.com,student,Java
+S010,Jane,jane@campus.com,student,Java
+S011,Kevin,kevin@campus.com,student,Python
+S012,Linda,linda@campus.com,student,Python
+S013,Mike,mike@campus.com,student,Python
+S014,Nora,nora@campus.com,student,Python
+S015,Oscar,oscar@campus.com,student,Python
+S016,Paula,paula@campus.com,student,Python
+S017,Quinn,quinn@campus.com,student,Python
+S018,Rachel,rachel@campus.com,student,Python
+S019,Steve,steve@campus.com,student,Python
+S020,Tina,tina@campus.com,student,Python
+S021,Uma,uma@campus.com,student,DBMS
+S022,Victor,victor@campus.com,student,DBMS
+S023,Wendy,wendy@campus.com,student,DBMS
+S024,Xander,xander@campus.com,student,DBMS
+S025,Yara,yara@campus.com,student,DBMS
+S026,Zack,zack@campus.com,student,DBMS
+S027,Amber,amber@campus.com,student,DBMS
+S028,Ben,ben@campus.com,student,DBMS
+S029,Clara,clara@campus.com,student,DBMS
+S030,Dan,dan@campus.com,student,DBMS
+S031,Eve,eve@campus.com,student,AI
+S032,Frank,frank@campus.com,student,AI
+S033,Gina,gina@campus.com,student,AI
+S034,Harry,harry@campus.com,student,AI
+S035,Ivy,ivy@campus.com,student,AI
+S036,Jack,jack@campus.com,student,AI
+S037,Karen,karen@campus.com,student,AI
+S038,Liam,liam@campus.com,student,AI
+S039,Mona,mona@campus.com,student,AI
+S040,Nate,nate@campus.com,student,AI
+S041,Olive,olive@campus.com,student,Java
+S042,Peter,peter@campus.com,student,Python
+S043,Queen,queen@campus.com,student,DBMS
+S044,Ron,ron@campus.com,student,AI
+S045,Susan,susan@campus.com,student,Java
+S046,Tom,tom@campus.com,student,Python
+S047,Ursula,ursula@campus.com,student,DBMS
+S048,Victor2,victor2@campus.com,student,AI
+S049,Wally,wally@campus.com,student,Java
+S050,Xena,xena@campus.com,student,Python
+S051,Yuri,yuri@campus.com,student,DBMS
+S052,Zane,zane@campus.com,student,AI
+S053,Alan,alan@campus.com,student,Java
+S054,Bella,bella@campus.com,student,Python
+S055,Craig,craig@campus.com,student,DBMS
+S056,Daisy,daisy@campus.com,student,AI
+S057,Eli,eli@campus.com,student,Java
+S058,Felix,felix@campus.com,student,Python
+S059,Gloria,gloria@campus.com,student,DBMS
+S060,Hugo,hugo@campus.com,student,AI
+anu@campus.com,Anubhav,anu@campus.com,Student,Java , Dsa

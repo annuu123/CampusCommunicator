@@ -17,6 +17,7 @@ public class ChatBST {
 
     private Node root;
 
+    // Add a new message to the BST, ordered by timestamp
     public void addMessage(Message message) {
         root = insert(root, message);
     }
@@ -33,6 +34,7 @@ public class ChatBST {
         return root;
     }
 
+    // Show all messages in sorted order
     public void showMessages() {
         inOrderTraversal(root);
     }
@@ -60,7 +62,23 @@ public class ChatBST {
         }
     }
 
-    // ✅ New: Search for messages by sender
+    // ✅ Search for messages containing a keyword
+    public void searchMessages(String keyword) {
+        System.out.println("🔍 Searching for messages containing: " + keyword);
+        searchMessagesRecursive(root, keyword);
+    }
+
+    private void searchMessagesRecursive(Node node, String keyword) {
+        if (node != null) {
+            searchMessagesRecursive(node.left, keyword);
+            if (node.message.getContent().toLowerCase().contains(keyword.toLowerCase())) {
+                System.out.println(node.message);
+            }
+            searchMessagesRecursive(node.right, keyword);
+        }
+    }
+
+    // ✅ Search for messages by sender
     public void searchMessageBySender(String sender) {
         List<Message> messages = getAllMessagesInOrder();
         boolean found = false;
@@ -74,19 +92,4 @@ public class ChatBST {
             System.out.println("\n❌ No message found from sender: " + sender);
         }
     }
-    public void searchMessages(String keyword) {
-        System.out.println("🔍 Searching for messages containing: " + keyword);
-        searchMessagesRecursive(root, keyword);
-    }
-    
-    private void searchMessagesRecursive(Node node, String keyword) {
-        if (node != null) {
-            searchMessagesRecursive(node.left, keyword);
-            if (node.message.getContent().toLowerCase().contains(keyword.toLowerCase())) {
-                System.out.println(node.message);
-            }
-            searchMessagesRecursive(node.right, keyword);
-        }
-    }
-    
 }

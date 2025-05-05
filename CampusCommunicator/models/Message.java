@@ -1,19 +1,16 @@
 package CampusCommunicator.models;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Message {
     private String sender;
     private String receiver;
     private String content;
-    private LocalDateTime timestamp;
+    private String timestamp;
 
     public Message(String sender, String receiver, String content) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
-        this.timestamp = LocalDateTime.now(); // Automatically sets current time
+        this.timestamp = java.time.LocalDateTime.now().toString();
     }
 
     public String getSender() {
@@ -28,13 +25,12 @@ public class Message {
         return content;
     }
 
-    public LocalDateTime getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        return "[" + timestamp.format(formatter) + "] " + sender + " → " + receiver + ": " + content;
+        return "[" + timestamp + "] " + sender + " ➔ " + receiver + ": " + content;
     }
 }

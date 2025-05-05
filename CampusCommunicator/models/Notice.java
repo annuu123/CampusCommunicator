@@ -3,33 +3,36 @@ package CampusCommunicator.models;
 public class Notice {
     private String title;
     private String content;
-    private String author;  // Add an 'author' field
+    private String postedBy; // Author of the notice
 
-    // Constructor to initialize the notice
-    public Notice(String title, String content, String author) {
+    // Constructor
+    public Notice(String title, String content, String postedBy) {
         this.title = title;
         this.content = content;
-        this.author = author;
+        this.postedBy = postedBy;
     }
 
-    // Getter for title
+    // Getters
     public String getTitle() {
         return title;
     }
 
-    // Getter for content
     public String getContent() {
         return content;
     }
 
-    // Getter for author (this is the method you need)
-    public String getAuthor() {
-        return author;
+    public String getPostedBy() {
+        return postedBy; // This method returns the author
     }
 
-    // Override toString() for display
+    public String getAuthor() {
+        return postedBy; // This method can also return the author
+    }
+
     @Override
     public String toString() {
-        return "Title: " + title + "\nContent: " + content + "\nPosted By: " + author;
+        return "Title: " + title + "\n" +
+               "Content: " + content + "\n" +
+               "Posted by: " + postedBy;
     }
 }

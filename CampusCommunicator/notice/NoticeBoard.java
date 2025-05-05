@@ -3,7 +3,9 @@ package CampusCommunicator.notice;
 
 import CampusCommunicator.models.Notice;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class NoticeBoard {
     private Queue<Notice> notices;
@@ -57,4 +59,17 @@ public class NoticeBoard {
             System.out.println("No notices found by this author.");
         }
     }
+    public List<Notice> searchByKeyword(String keyword) {
+    return notices.stream()
+        .filter(n -> n.getTitle().toLowerCase().contains(keyword.toLowerCase()) || 
+                     n.getContent().toLowerCase().contains(keyword.toLowerCase()))
+        .collect(Collectors.toList());
+}
+
+public List<Notice> searchByAuthor(String author) {
+    return notices.stream()
+        .filter(n -> n.getPostedBy().equalsIgnoreCase(author))
+        .collect(Collectors.toList());
+}
+
 }
