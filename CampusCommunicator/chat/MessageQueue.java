@@ -39,17 +39,15 @@ public class MessageQueue {
         return messages;
     }
 
-    public void getMessagesForUser(String email) {
-        boolean found = false;
+    // ✅ KEEP ONLY THIS ONE
+    public List<ChatMessage> getMessagesForUser(String email) {
+        List<ChatMessage> userMessages = new ArrayList<>();
         for (ChatMessage message : messages) {
             if (message.getReceiver().equalsIgnoreCase(email)) {
-                message.displayMessage();
-                found = true;
+                userMessages.add(message);
             }
         }
-        if (!found) {
-            System.out.println("No messages found for: " + email);
-        }
+        return userMessages;
     }
 
     private void saveMessagesToFile() {

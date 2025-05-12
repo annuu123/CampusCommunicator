@@ -3,6 +3,8 @@ package CampusCommunicator.chat;
 import CampusCommunicator.models.User;
 import CampusCommunicator.chat.ChatMessage;
 import CampusCommunicator.chat.MessageQueue;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class ChatManager {
@@ -53,22 +55,31 @@ public class ChatManager {
 
     // View messages for students
     private void viewMessages() {
-        System.out.println("\n--- Messages from Faculty ---");
-        // Assuming messageQueue holds all messages for the user.
-        messageQueue.getMessagesForUser(user.getEmail());
+        System.out.println("\n--- Your Messages ---");
+        List<ChatMessage> msgs = messageQueue.getMessagesForUser(user.getEmail());
+        if (msgs.isEmpty()) {
+            System.out.println("No messages.");
+        } else {
+            for (ChatMessage msg : msgs) {
+                msg.displayMessage();
+            }
+        }
     }
+    
 
     // Send a message to a faculty member
     private void sendMessage() {
-        System.out.print("Enter message for faculty: ");
+        System.out.print("Enter recipient's email: ");
+        String recipientEmail = scanner.nextLine();
+    
+        System.out.print("Enter your message: ");
         String messageText = scanner.nextLine();
-        
-        // Add logic for saving the message to the system or queue
-        ChatMessage message = new ChatMessage(user.getEmail(), "faculty", messageText);
+    
+        ChatMessage message = new ChatMessage(user.getEmail(), recipientEmail, messageText);
         messageQueue.addMessage(message);
-        System.out.println("Message sent to faculty.");
+        System.out.println("Message sent to " + recipientEmail);
     }
-
+    
     // Send a message to another student
     private void sendMessageToOtherStudents() {
         System.out.print("Enter recipient's email: ");
